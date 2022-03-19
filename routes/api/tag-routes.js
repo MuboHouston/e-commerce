@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
           'product_name',
           'price'
         ],
-        as: 'product' 
+        as: 'tagged_product' 
       }
     ]
   })
@@ -33,7 +33,17 @@ router.get('/:id', (req, res) => {
   Tag.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Product,
+        attributes: [
+          'product_name',
+          'price'
+        ],
+        as: 'tagged_product' 
+      }
+    ]
   })
   .then(dbTagData => {
     res.json(dbTagData)
