@@ -114,7 +114,7 @@ router.delete('/:id', (req, res) => {
       })
     }
     res.json({
-      message: 'success',
+      message: 'deleted',
       data: dbCategoryData
     })
   })
